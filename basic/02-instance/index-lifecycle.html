@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>Vue.js lifecyle</title>
+</head>
+<body>
+  <div id="root" v-on:click="$options.handleInput">
+    {{title}}
+  </div>
+</body>
+<script>
+  var vm = new Vue({
+    el: '#root',
+    data: {
+      title: 'hello'
+    },
+    template: '<b>{{title}}</b>',
+    methods: {
+      handleClick() {
+        this.$options.handleInput()
+      }
+    },
+    handleInput() {
+      console.log(0)
+    },
+
+    beforeCreate() {
+      console.log(this)
+      console.log(this.title)
+      console.log(document.querySelector('b'))
+    },
+
+    created() {
+      // console.log('created')
+      console.log(this)
+      console.log(this.title)
+      console.log(document.querySelector('b'))
+    },
+
+    beforeMount() {
+      // console.log('beforeMount')
+      console.log(this)
+      console.log(this.title)
+      console.log(document.querySelector('b'))
+    },
+
+    mounted() {
+      // console.log('mounted')
+      console.log(this)
+      console.log(this.title)
+      console.log(document.querySelector('b'))
+      // setInterval(() => {
+      //   this.title = new Date().getTime()
+      // }, 1000)
+      setTimeout(() => {
+        this.$destroy()
+      }, 5000)
+    },
+
+    beforeUpdate() {
+      console.log('beforeUpdate')
+    },
+
+    updated() {
+      console.log('updated')
+
+    },
+
+    beforeDestroy() {
+      console.log('beforeDestroy')
+
+    },
+
+    destroyed() {
+      console.log('destroyed')
+
+    },
+
+    errorCaptured() {
+      
+    }
+  })
+</script>
+</html>
