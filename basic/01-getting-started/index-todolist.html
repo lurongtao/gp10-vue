@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>Vue.js todo list</title>
+</head>
+<body>
+  <div id="root">
+    <div>
+      <input type="text" v-model="keywords" v-on:keyup.enter="handleKeyup">
+      {{keywords}}
+    </div>
+    <ul>
+      <li 
+        v-for="(item,index) in list" 
+        v-if="index > 0" 
+        v-bind:x="list[0]"
+        v-on:click="handleClick(index)"
+      >
+       {{index}} - {{item}}
+      </li>
+    </ul>
+  </div>
+</body>
+<script>
+  var vm = new Vue({
+    el: '#root',
+    data: {
+      list: ['item 0', 'item 1'],
+      keywords: 'aaa'
+    },
+    methods: {
+      handleKeyup(e) {
+        this.list.push(this.keywords)
+        this.keywords = ''
+      },
+      handleClick(index) {
+        this.list.splice(index, 1)
+      }
+    },
+    mounted() {
+      // console.log(this)
+    }
+  })
+</script>
+</html>
