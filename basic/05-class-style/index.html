@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>Vue.js class and style</title>
+  <style>
+    .active {
+      background: red;
+    }
+    .style {
+      font-size: 100px;
+      color: greenyellow;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <ul>
+      <li 
+        v-for="(item,index) in course" 
+        @click="handleClick(index)"
+        :class="{active: currentIndex === index}"
+      >
+        {{item}}
+      </li>
+    </ul>
+    <div :class="{style: styleValue, active: true}" @click="changeStyle">
+      hello
+    </div>
+    <div :class="[a, s]">
+      world
+    </div>
+    <div :style="{'font-size': '30px', background: clr}">
+      hi
+    </div>
+    <div :style="[style]">
+      haha
+    </div>
+  </div>
+</body>
+<script>
+  var vm = new Vue({
+    el: '#root',
+    data: {
+      course: ['html', 'js', 'css'],
+      currentIndex: 0,
+      styleValue: true,
+      a: 'active',
+      s: 'style',
+      clr: '#f9efd4',
+      style: {
+        fontSize: '100px'
+      }
+    },
+    methods: {
+      handleClick(index) {
+        this.currentIndex = index
+      },
+      changeStyle() {
+        this.styleValue = !this.styleValue
+      }
+    }
+  })
+</script>
+</html>

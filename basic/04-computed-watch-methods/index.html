@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>Vue.js computed watch methods</title>
+</head>
+<body>
+  <div id="root">
+    <span>{{ reverseText }}</span>
+    <span>{{ reverseText2() }}</span>
+    <span>{{ dataStr }}</span>
+    <span>{{ fullName }}</span>
+    <div><button @click="handleClick">click</button></div>
+  </div>
+</body>
+<script>
+  var vm = new Vue({
+    el: '#root',
+
+    data: {
+      title: 'hello',
+      dataStr: '',
+      firstName: '',
+      lastName: ''
+    },
+
+    computed: {
+      reverseText: function() {
+        console.log(0)
+        return this.title.split('').reverse().join('')
+      },
+      fullName() {
+        return this.firstName + this.lastName
+      }
+    },
+
+    watch: {
+      firstName(newValue) {
+        this.fullName = newValue + this.lastName
+      },
+      lastName(newValue) {
+        this.fullName = this.firstName + newValue
+      }
+    },
+
+    methods: {
+      handleClick() {
+        this.title = 'world'
+        this.selfFoo('hello')
+      },
+      selfFoo(args) {
+        console.log(args)
+      },
+      reverseText2: function() {
+        console.log(1)
+        return this.title.split('').reverse().join('')
+      }
+    },
+
+    mounted() {
+      // setInterval(() => {
+      //   this.title = new Date().getTime().toString()
+      //   this.dataStr = new Date().getTime().toString()
+      // }, 1000)
+    },
+
+    updated() {
+      this.title = new Date().getTime().toString() + Math.random()
+    },
+
+    watch: {
+      title(newValue) {
+        this.title = new Date().getTime().toString() + Math.random()
+      }
+    }
+  })
+</script>
+</html>

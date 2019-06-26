@@ -1,0 +1,37 @@
+2019-06-26
+零、computed watch methods 的使用场景
+computed:
+- 当依赖某些状态(state)产生新值的时候，优先选择使用computed
+
+watch:
+- 用来解决beforeUpdate, updated两个钩子里修改状态导致死循环的问题，采用watch
+- 监测可能异步改变值得时候
+
+methods:
+- 定义事件响应函数
+- 定义组件公共处理函数
+
+一、computed 和 methods 区别
+1、相同点
+如果作为模板的数据显示，二者都能实现相应的功能，唯一不同的是methods定义的方法需要执行
+2、不同点
+- computed 会基于响应数据缓存，methods不会缓存
+- diff之前先看data里的数据是否发生变化，如果没有变化computed的方法不会执行，但methods里的方法会执行
+
+二、watch VS computed
+1、相同点
+如果做信息展示，二者可以实现同样的功能。不同的是watch可能需要监听更多的属性。在这个时候，我们优先选择computed
+
+2、不同点
+- 当想在更新data数据后再次更新数据的时候，不能使用updated生命周期钩子，建议使用watch来监听data里数据的变化
+- 使用 watch 选项允许我们执行异步操作 (访问一个 API)，限制我们执行该操作的频率，并在我们得到最终结果前，设置中间状态。这些都是计算属性无法做到的。
+
+三、如何使模板重新渲染
+1、只要改变data里的数据就会可能触发模板渲染
+2、如果经过diff算法比较后，发现更新前的虚拟DOM和更新后的虚拟DOM相同，就不会渲染模板
+
+四、古老的MVC 架构
+backbone + jQuery + underscore
+
+http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html
+https://www.jianshu.com/p/7398ec36d591
