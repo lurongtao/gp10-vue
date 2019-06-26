@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>Vue.js form</title>
+</head>
+<body>
+  <div id="root">
+    <div>
+      <input type="text" v-model="username">
+      <input type="checkbox" value="吃饭" v-model="checkvalue">
+      <input type="checkbox" value="睡觉" v-model="checkvalue">
+      <input type="checkbox" value="打豆豆" v-model="checkvalue">
+      <div>{{checkvalue}}</div>
+    </div>
+    <div>
+      <input type="radio" value="男" name="gender" v-model="radiovalue"> 男
+      <input type="radio" value="女" name="gender" v-model="radiovalue"> 女
+      {{radiovalue}}
+    </div>
+    <div>
+      <select v-model="selectValue" multiple>
+        <option disabled value="">请选择</option>
+        <option value="0">北京</option>
+        <option value="1">上海</option>
+        <option value="2">广州</option>
+      </select>
+      <div>
+        {{selectValue}}
+      </div>
+    </div>
+    <div>
+      <select name="" id="">
+        <option value="" v-for="option in options" :value="option.value">{{option.text}}</option>
+      </select>
+      <div>{{options}}</div>
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        v-model="toggle"
+        true-value="是"
+        false-value="否"
+      />
+    </div>
+    <div>
+      <select name="" id="" v-model="newselect">
+        <option :value="{x: 1, y: 2, z: {w: 4}}">abc</option>
+      </select>
+    </div>
+    <div>
+      <input type="text" v-model.number="salary">
+    </div>
+  </div>
+</body>
+<script>
+  var vm = new Vue({
+    el: '#root',
+    data: {
+      username: 'abc',
+      checkvalue: ['打豆豆'],
+      radiovalue: '男',
+      selectValue: [],
+      toggle: '',
+      options: [
+        { text: 'One', value: {x: 1, y: 2} },
+        { text: 'Two', value: 'B' },
+        { text: 'Three', value: 'C' }
+      ],
+      newselect: {
+        x: 1,
+        y: 2,
+        z: {
+          w: 3
+        }
+      },
+      salary: ''
+    }
+  })
+</script>
+</html>

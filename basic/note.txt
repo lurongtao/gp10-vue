@@ -35,3 +35,5 @@ backbone + jQuery + underscore
 
 http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html
 https://www.jianshu.com/p/7398ec36d591
+
+Rxjs

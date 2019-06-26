@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>Vue.js if</title>
+  <style>
+    
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div v-for="(value, index) of merged">
+      {{index}} - {{value}}
+    </div>
+    <div v-for="value in genObj">
+      {{value}}
+    </div>
+    <li v-for="n in even(numbers)">{{ n }}</li>
+    <div v-for="n,index in 'imodfdf'">{{index}}-{{n}}</div>
+    <ul>
+      <template v-for="n in 10">
+        <li>{{n}}</li>
+        <li>{{n+1}}</li>
+      </template>
+    </ul>
+  </div>
+</body>
+<script>
+  var vm = new Vue({
+    el: '#root',
+    data: {
+      show: false,
+      title: 'world',
+      loginType: 'username',
+      fruit: ['🍎', '📷'],
+      course: ['html', 'css'],
+      numbers: [ 1, 2, 3, 4, 5 ]
+    },
+    computed: {
+      merged() {
+        return [...this.fruit, ...this.course]
+      },
+      genObj() {
+        return {
+          x: 1, 
+          y: 2
+        }
+      }
+    },
+    methods: {
+      even: function (numbers) {
+        return numbers.filter(function (number) {
+          return number % 2 === 0
+        })
+      }
+    }
+  })
+</script>
+</html>
