@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>vue.js model</title>
+</head>
+<body>
+  <div id="root">
+    <base-checkbox v-model="lovingVue"></base-checkbox>
+    <child @click.native="handleClick"></child>
+  </div>
+  <script>
+    const BaseCheckbox = {
+      model: {
+        prop: 'checked',
+        event: 'change'
+      },
+
+      props: {
+        checked: Boolean
+      },
+
+      template: `
+        <input type="checkbox"
+          :checked="checked"
+          @change="$emit('change', $event.target.checked)"
+        />
+      `
+    }
+
+    const Child = {
+      template: `
+        <button>click</button>
+      `
+    }
+
+    var vm = new Vue({
+      el: '#root',
+      components: {
+        BaseCheckbox,
+        Child
+      },
+      data: {
+        isChecked: true,
+        lovingVue: false
+      },
+      methods: {
+        handleChange() {
+          this.isChecked = false
+        },
+        handleClick() {
+          alert(0)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

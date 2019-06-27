@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>vue.js slot</title>
+</head>
+<body>
+  <div id="root">
+    <current-user>
+      <template v-slot:default="{userinfo, workinfo}">
+        <div v-if="baseInfo">
+          <div>{{userinfo.firstName}}</div>
+          <div>{{workinfo.position}}</div>
+        </div>
+      </template>
+      <div slot="other">other</div>
+    </current-user>
+  </div>
+  <script>
+    
+    const CurrentUser = {
+      template: `
+        <div>
+          <slot :userinfo="user" :workinfo="work"></slot>
+          <slot name="other"></slot>
+        </div>
+      `,
+      data() {
+        return {
+          user: {
+            firstName: 'zhao'
+          },
+          work: {
+            position: 'manager'
+          }
+        }
+      }
+    }
+
+    var vm = new Vue({
+      el: '#root',
+      components: {
+        CurrentUser
+      },
+      data: {
+        title: 'hello',
+        baseInfo: true
+      }
+    })
+  </script>
+</body>
+</html>

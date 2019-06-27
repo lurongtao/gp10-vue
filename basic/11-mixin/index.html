@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>mixin</title>
+</head>
+<body>
+  <div id="root">
+    <div>
+      {{filteredList}}
+      <hr/>
+      {{mapList}}
+      <hr/>
+      {{x}}
+    </div>
+    <div><button @click="handleClick">click</button></div>
+  </div>
+  <script>
+    var myMixin = {
+      methods: {
+        handleClick() {
+          console.log('mixin info')
+        }
+      },
+      computed: {
+        filteredList() {
+          return this.Todos.filter((value) => {
+            return value.finished
+          })
+        }
+      },
+      data: {
+        x: {
+          y: {
+            a: 0,
+            z: 3
+          }
+        }
+      }
+    }
+
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        Todos: [
+          {
+            id: 1,
+            task: 'a',
+            finished: true
+          },
+          {
+            id: 2,
+            task: 'b',
+            finished: false
+          },
+          {
+            id: 3,
+            task: 'c',
+            finished: true
+          }
+        ],
+        x: {
+          y: {
+            w: 1,
+            z: 4
+          }
+        }
+      },
+      methods: {
+        handleClick() {
+          console.log('root info')
+        }
+      },
+      mixins: [myMixin],
+      computed: {
+        filteredList() {
+          return this.Todos.filter((value) => {
+            return !value.finished
+          })
+        },
+        mapList() {
+          return this.Todos.map((value) => {
+            return {
+              ...value,
+              task: value.task + ' 任务'
+            }
+          })
+        }
+      }
+    })
+  </script>
+</body>
+</html>

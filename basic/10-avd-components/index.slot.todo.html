@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>slot</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <todo-list>
+      <template v-slot:todo="{ todoitem }">
+        <div v-if="todoitem.finished">
+          ✅ {{todoitem.task}}
+        </div>
+        <div v-else>
+            {{todoitem.task}}
+        </div>
+      </template>
+    </todo-list>
+  </div>
+  <script>
+    const TodoList = {
+      template: `
+        <ul>
+          <li 
+            v-for="item in filteredTodos"
+            :key="item.id"
+          >
+            <slot name="todo" :todoitem="item"></slot>
+          </li>
+        </ul>
+      `,
+
+      data() {
+        return {
+          filteredTodos: [
+            {
+              id: 1,
+              task: 'a',
+              finished: true
+            },
+            {
+              id: 2,
+              task: 'b',
+              finished: false
+            },
+            {
+              id: 3,
+              task: 'c',
+              finished: true
+            }
+          ]
+        }
+      }
+    } 
+
+    var vm = new Vue({
+      el: '#root',
+      components: {
+        TodoList
+      }
+    })
+  </script>
+</body>
+</html>

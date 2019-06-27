@@ -72,3 +72,8 @@ this.propsname
 父子组件间信息传递：
 - 父传子：props
 - 子传父：@defineEvent="handleEvent", this.$emit('defineEvent', args)
+- :propsName.sync (@update:propsName)
+- v-slot(代替v2.6- slot-scop)
+
+异步组件，路由懒加载
+

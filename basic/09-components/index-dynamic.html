@@ -13,7 +13,9 @@
       <li v-for="c in componentNames" @click="handleClick(c)">{{c}}</li>
     </ul>
     <div>
-      <component :is="currentComp"></component>
+      <keep-alive>
+        <component :is="currentComp"></component>
+      </keep-alive>
     </div>
 
     <ul>
@@ -39,9 +41,18 @@
 
   const comp1 = {
     template: '<div>component 1</div>',
+    mounted() {
+      console.log(0)
+    },
     destroyed() {
       console.log('comp1')
-    }
+    },
+    activated() {
+      console.log('activated')
+    },
+    deactivated() {
+      console.log('deactivated')
+    },
   }
   const comp2 = {
     template: '<div>component 2</div>',
