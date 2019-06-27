@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>Vue.js dynamic component</title>
+</head>
+<body>
+  <div id="root">
+    <ul>
+      <li v-for="c in componentNames" @click="handleClick(c)">{{c}}</li>
+    </ul>
+    <div>
+      <component :is="currentComp"></component>
+    </div>
+
+    <ul>
+      <list></list>
+    </ul>
+    
+    <ul>
+      <span>aa</span>
+    </ul>
+
+    <div>
+      <child></child>
+      <child></child>
+      <child></child>
+    </div>
+  </div>
+</body>
+<script>
+
+  const List = {
+    template: '<li>aaa</li>'
+  }
+
+  const comp1 = {
+    template: '<div>component 1</div>',
+    destroyed() {
+      console.log('comp1')
+    }
+  }
+  const comp2 = {
+    template: '<div>component 2</div>',
+    destroyed() {
+      console.log('comp2')
+    }
+  }
+  const comp3 = {
+    template: '<div>component 3</div>',
+    destroyed() {
+      console.log('comp3')
+    }
+  }
+
+  let data = {
+    count: 0
+  }
+
+  const child = {
+    template: '<div>{{count}}<button @click="count++">+</button></div>',
+    data() {
+      return data
+    }
+  }
+
+  new Vue({
+    el: '#root',
+
+    data: {
+      componentNames: ['comp1', 'comp2', 'comp3'],
+      currentComp: 'comp1'
+    },
+    
+    methods: {
+      handleClick(component) {
+        this.currentComp = component
+      }
+    },
+
+    components: {
+      comp1,
+      comp2,
+      comp3,
+      List,
+      child
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>Vue.js components avd</title>
+</head>
+<body>
+  <div id="root">
+    <parent></parent>
+  </div>
+</body>
+<script>
+  const Child = {
+    props: {
+      msg: [String, Number],
+      num: {
+        type: Number,
+        validator(value) {
+          return value === 5
+        }
+      },
+      title: String
+    },
+    template: '<div>{{msg}} {{num}}</div>'
+  }
+
+  const Parent = {
+    template: '<div><h1>parent</h1> <child :msg="3" :num="5" title="a"></child></div>',
+    components: {
+      Child
+    }
+  }
+
+  var vm = new Vue({
+    el: '#root', 
+    components: {
+      Parent
+    }
+  })
+</script>
+</html>

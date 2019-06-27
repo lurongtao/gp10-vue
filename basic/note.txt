@@ -37,3 +37,38 @@ http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html
 https://www.jianshu.com/p/7398ec36d591
 
 Rxjs
+
+2019-06-27
+blog
+  - blog-list
+    - blog-list-item
+      - blog-button
+  - blog-form
+    - blog-button
+   
+key
+ul
+ - li
+ - li
+ - li
+
+ -li
+ -li
+
+组件内部：data
+data: {
+  x: 1
+}
+this.x
+
+组件外部：props
+props: ['propsname']
+this.propsname
+
+组件间是单向数据流动的
+- 组件外部不能访问组件内部的数据
+- 组件内部不能修改组件外部的数据
+
+父子组件间信息传递：
+- 父传子：props
+- 子传父：@defineEvent="handleEvent", this.$emit('defineEvent', args)

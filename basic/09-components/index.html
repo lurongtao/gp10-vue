@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>Vue.js components</title>
+</head>
+<body>
+  <div id="root">
+    <div buttonText="click">hello</div>
+    <blog 
+      v-for="item in posts"
+      :title="item.title"
+      :key="item.id"
+    ></blog>
+  </div>
+</body>
+<script>
+  // Vue.component('blog-button', {
+  //   props: ['buttonText'],
+  //   template: '<button>{{buttonText}}</button>'
+  // })
+
+  // Vue.component('blog-list-item', {
+  //   template: '<div>item <blog-button button-text="enter"></blog-button></div>'
+  // })
+
+  // Vue.component('blog-list', {
+  //   template: `
+  //     <div>
+  //       <blog-list-item></blog-list-item>
+  //       <blog-list-item></blog-list-item>
+  //       <blog-list-item></blog-list-item>
+  //     </div>
+  //   `
+  // })
+
+  // Vue.component('blog-form', {
+  //   template: '<div><textarea>请输入...</textarea><br/><blog-button button-text="submit"></blog-button></div>'
+  // })
+
+  // Vue.component('blog', {
+  //   template: `
+  //     <div>
+  //       <blog-list></blog-list>
+  //       <blog-form></blog-form>
+  //     </div>
+  //   `
+  // })
+
+  const BlogButton = {
+    props: ['ButtonText'],
+    template: '<button>{{ButtonText}}</button>'
+  }
+
+  const BlogListItem = {
+    template: '<div>item <blog-button button-text="enter"></blog-button></div>',
+    components: {
+      BlogButton
+    }
+  }
+
+  const BlogList = {
+    template: `
+      <div>
+        <blog-list-item></blog-list-item>
+        <blog-list-item></blog-list-item>
+        <blog-list-item></blog-list-item>
+      </div>
+    `,
+    components: {
+      BlogListItem
+    }
+  }
+
+  const BlogForm = {
+    template: '<div><textarea>请输入...</textarea><br/><blog-button button-text="submit"></blog-button></div>',
+    components: {
+      BlogButton
+    }
+  }
+
+  const Blog = {
+    props: ['title'],
+    template: `
+      <div>
+        <span>{{title}}</span>
+        <blog-list></blog-list>
+        <blog-form></blog-form>
+      </div>
+    `,
+    components: {
+      BlogList,
+      BlogForm
+    }
+  }
+
+  new Vue({
+    el: '#root',
+    data: {
+      posts: [
+        { id: 1, title: 'My journey with Vue' },
+        { id: 2, title: 'Blogging with Vue' },
+        { id: 3, title: 'Why Vue is so fun' }
+      ]
+    },
+    components: {
+      Blog
+    }
+  })
+</script>
+</html>
