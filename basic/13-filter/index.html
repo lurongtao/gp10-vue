@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>filter</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div>
+      {{gender | g('性') | mark}}
+    </div>
+  </div>
+  <script>
+
+    // Vue.filter('g', (value) => {
+    //   return value === 0 ? '男' : '女'
+    // })
+    
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        message: 'greeting',
+        gender: 0
+      },
+      filters: {
+        g(value, sex) {
+          return value === 0 ? '男' + sex : '女' + sex
+        },
+        mark(value) {
+          return value === '男性' ? '♂' : '♀'
+        }
+      }
+    })
+  </script>
+</body>
+</html>
