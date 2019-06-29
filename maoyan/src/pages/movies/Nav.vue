@@ -22,6 +22,8 @@
   height .44rem
   background #fff
   border_1px(0 0 1px 0)
+  position relative
+  z-index 1100
   > div
     display flex
     .city-entry

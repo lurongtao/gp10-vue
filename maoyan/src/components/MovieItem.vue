@@ -9,30 +9,35 @@
       <div class="mb-outline-b content-wrapper">
         <div class="column content">
           <div class="box-flex movie-title">
-            <div class="title line-ellipsis v3dimax_title">蜘蛛侠：英雄远征</div>
-              <span class="version v3d imax"></span>
+            <div class="title line-ellipsis v3dimax_title">{{movie.nm}}</div>
+              <span class="version" :class="movie.version"></span>
           </div>
           <div class="detail column">
             <div class="score line-ellipsis"> 
               <span class="score-suffix">观众评 </span>
-              <span class="grade">9.2</span>
+              <span class="grade">{{movie.sc}}</span>
             </div>
-            <div class="actor line-ellipsis">主演: 汤姆·赫兰德,杰克·吉伦哈尔,塞缪尔·杰克逊</div>
-            <div class="show-info line-ellipsis">今天223家影院放映5183场</div>
+            <div class="actor line-ellipsis">主演: {{movie.star}}</div>
+            <div class="show-info line-ellipsis">{{movie.showInfo}}</div>
           </div>
         </div>
-        <div class="button-block" data-id="1198925">
-          <div class="btn normal"><span class="fix" data-bid="dp_wx_home_movie_btn">购票</span></div>
-        </div>
+        <movie-button 
+          :showst="movie.showst"
+        ></movie-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import MovieButton from './MovieButton'
 export default {
   props: {
     movie: Object
+  },
+
+  components: {
+    MovieButton
   }
 }
 </script>

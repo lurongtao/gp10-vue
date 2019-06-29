@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "better-scroll": "^1.15.2",
+    "mint-ui": "^2.2.13",
+    "vue-router": "^3.0.6"
+  },
+  "devDependencies": {
+    "babel-plugin-component": "^1.1.1"
+  }
+}
