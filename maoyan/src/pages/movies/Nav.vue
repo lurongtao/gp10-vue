@@ -55,7 +55,14 @@
         &.active
           color #ef4238
           border_1px(0 0 5px 0, #ef4238)
+          &:after
+            z-index 1000
+            top -2px
           box-sizing border-box
+
+      &:after
+        display none !important
+
     .search-entry
       flex 80
       padding-right .15rem

@@ -1,0 +1,22 @@
+wrap($is-wrap=true) {
+  if $is-wrap == true {
+      word-wrap: break-word;
+      word-break: break-all;
+  } else {
+      white-space: nowrap;
+  }
+}
+
+ellipsis($width = 0, $line-clamp = 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: $width;
+    if abs($line-clamp) > 1 {
+        // 要使得多行截取生效，display的值只能为-webkit-box
+        display: -webkit-box !important;
+        -webkit-line-clamp: $line-clamp;
+        wrap()
+    } else {
+        wrap(false)
+    }
+}

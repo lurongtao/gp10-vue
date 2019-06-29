@@ -3,3 +3,24 @@
 .vue(html, js, css)
 
 https://stylus-lang.net/docs/selectors.html
+
+2019-06-29
+axios
+可以用在前后端（Node.js）
+
+样式优先级
+用户定义的浏览器样式
+浏览器默认样式
+用于定义样式
+
+IE6,IE7
+div
+  div
+div
+  div
+http://p0.meituan.net/w.h/moviemachine/5dac476535359b7bb951ff15d37a9d0b153821.jpg
+https://p0.meituan.net/128.180/movie/c0bec212d759ad52f22bbb280e551c065000875.jpg
+
+移动端图片要引入3倍图
+
+https://mint-ui.github.io/#!/zh-cn

@@ -60,6 +60,8 @@ export default {
     height .5rem
     border_1px(1px 0 0 0)
     background #fff
+    position relative
+    z-index 1000
     ul
       display flex
       height 100%
