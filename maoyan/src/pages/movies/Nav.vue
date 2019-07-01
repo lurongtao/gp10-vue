@@ -6,8 +6,8 @@
       </div>
       
       <div class="switch-hot">
-        <div class="hot-item active">正在热映</div>
-        <div class="hot-item">即将上映</div>
+        <router-link tag="div" to="/movies/intheater" active-class="active" class="hot-item">正在热映</router-link>
+        <router-link tag="div" to="/movies/comingsoon" active-class="active" class="hot-item">即将上映</router-link>
       </div>
 
       <div class="search-entry search-icon"></div>

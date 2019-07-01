@@ -19,7 +19,4 @@ export default {
 
 <style lang="stylus" scoped>
 
-// div
-//   list = (one 1) (two 2) (three 3)
-//   apply(list)
 </style>

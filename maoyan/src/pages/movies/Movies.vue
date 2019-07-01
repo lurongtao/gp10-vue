@@ -1,7 +1,7 @@
 <template>
   <div>
     <Nav></Nav>
-    <Intheaters></Intheaters>
+    <router-view></router-view>
   </div>
 </template>
 

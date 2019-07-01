@@ -5,6 +5,9 @@ import Movies from '../pages/movies/Movies'
 import Theater from '../pages/theaters/Theater'
 import Profile from '../pages/profile/Profile'
 
+import Intheater from '../pages/movies/Intheaters'
+import Comingsoon from '../pages/movies/Comingsoon'
+
 Vue.use(VueRouter)
 
 let routes = [
@@ -15,7 +18,20 @@ let routes = [
   {
     path: '/movies',
     name: 'movies',
-    component: Movies
+    component: Movies,
+    redirect: '/movies/intheater',
+    children: [
+      {
+        path: 'intheater',
+        name: 'intheater',
+        component: Intheater
+      },
+      {
+        path: 'comingsoon',
+        name: 'comingsoon',
+        component: Comingsoon
+      }
+    ]
   },
   {
     path: '/theaters',
