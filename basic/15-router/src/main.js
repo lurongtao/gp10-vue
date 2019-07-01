@@ -9,6 +9,6 @@ new Vue({
   router,
   render: h => h(App),
   mounted() {
-    console.log(this)
+    // console.log(this)
   },
 }).$mount('#app')
