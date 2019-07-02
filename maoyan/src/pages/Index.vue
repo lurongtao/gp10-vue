@@ -2,7 +2,9 @@
   <div class="index-container">
     <header>猫眼电影</header>
     <main>
-      <router-view></router-view>
+      <transition name="fade">
+        <router-view class="outlet"></router-view>
+      </transition>
     </main>
     <nav>
       <ul>
@@ -50,6 +52,7 @@ export default {
     flex 1
     background #fff
     overflow hidden
+    position relative
   nav 
     height .5rem
     border_1px(1px 0 0 0)
@@ -73,5 +76,17 @@ export default {
           color #f03d37
           g
             fill #f03d37
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.outlet {
+  width 100%
+  position absolute
+}
 
 </style>

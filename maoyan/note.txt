@@ -24,3 +24,7 @@ https://p0.meituan.net/128.180/movie/c0bec212d759ad52f22bbb280e551c065000875.jpg
 移动端图片要引入3倍图
 
 https://mint-ui.github.io/#!/zh-cn
+
+2019-07-02
+scoped穿透
+https://www.cnblogs.com/jszhp/p/9549706.html

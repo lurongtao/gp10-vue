@@ -7,11 +7,9 @@
 
 <script>
 import Nav from './Nav'
-import Intheaters from './Intheaters'
 export default {
   components: {
-    Nav,
-    Intheaters
+    Nav
   }
 }
 </script>

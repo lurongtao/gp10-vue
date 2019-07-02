@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>transition3</title>
+  <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+  <script src="../vue.js"></script>
+  <style>
+    /* 
+    enter
+    enter-to
+    enter-active
+    leave
+    leave-to
+    leave-active 
+    */
+    .fade-enter, .fade-leave-to, .fade-appear-to {
+      opacity: 0
+    }
+    .fade-enter-active, .fade-leave-active {
+      transition: all 1s
+    }
+
+    .fade-enter-active {
+      animation: bounce 1s
+    }
+
+    .fade-leave-active {
+      animation: bounce 1s reverse
+    }
+
+    @keyframes bounce {
+      0% {
+        transform: scale(0);
+        transform-origin: 0 0;
+      }
+
+      50% {
+        transform: scale(1.5);
+        transform-origin: 0 0;
+      }
+
+      100% {
+        transform: scale(1);
+        transform-origin: 0 0;
+      }
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background: yellowgreen;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="root">
+    <transition
+
+      name="fade"
+      type="animation"
+    >
+      <div v-if="isShow" class="box">
+        hello
+      </div>
+    </transition>
+    <div>
+      <button @click="handleClick">显示/隐藏</button>
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el: '#root',
+      data: {
+        isShow: true
+      },
+
+      methods: {
+        handleClick() {
+          this.isShow = !this.isShow
+        }
+      },
+    })
+  </script>
+</body>
+</html>
