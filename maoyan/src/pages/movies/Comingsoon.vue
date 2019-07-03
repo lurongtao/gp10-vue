@@ -58,8 +58,14 @@ export default {
 
 <style lang="stylus" scoped>
 .container {
-  flex: 1;
-
+  flex: 1
+  position absolute
+  top 0
+  left 0
+  right 0
+  bottom 0
+  padding-top .44rem
+  width 100%
   .tab-content {
     height: 100%;
     over-flow: hidden;

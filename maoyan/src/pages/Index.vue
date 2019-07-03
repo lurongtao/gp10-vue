@@ -2,7 +2,10 @@
   <div class="index-container">
     <header>猫眼电影</header>
     <main>
-      <transition name="fade">
+      <transition
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
         <router-view class="outlet"></router-view>
       </transition>
     </main>
@@ -76,13 +79,6 @@ export default {
           color #f03d37
           g
             fill #f03d37
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .3s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
 
 .outlet {
   width 100%

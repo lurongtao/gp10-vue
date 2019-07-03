@@ -24,12 +24,14 @@ let routes = [
       {
         path: 'intheater',
         name: 'intheater',
-        component: Intheater
+        component: Intheater,
+        meta: 1,
       },
       {
         path: 'comingsoon',
         name: 'comingsoon',
-        component: Comingsoon
+        component: Comingsoon,
+        meta: 2
       }
     ]
   },
