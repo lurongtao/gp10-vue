@@ -18,7 +18,7 @@ let routes = [
   {
     path: '/movies',
     name: 'movies',
-    component: Movies,
+    component: () => import('../pages/movies/Movies'),
     redirect: '/movies/intheater',
     children: [
       {

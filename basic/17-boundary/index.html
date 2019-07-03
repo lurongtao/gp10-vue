@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div class="root">
+    <home :tree="tree"></home>
+  </div>
+
+  <script>
+
+    const global = new Vue({
+      data: {
+        count: 0
+      }
+    })
+
+    const swiper = {
+      template: `
+        <div>
+          {{count}}
+          <button @click="handleClick">click</button>  
+        </div>
+      `,
+      
+      methods: {
+        handleClick() {
+          global.$emit('change', 34)
+        }
+      },
+
+      computed: {
+        count() {
+          return global.count
+        }
+      },
+
+    }
+    const scroll = {
+      template: `
+        <div>b</div>
+      `,
+
+      mounted() {
+        global.$on('change', (value) => {
+          global.count += value
+        })
+      },
+    }
+
+    const home = {
+      name: 'home',
+      props: ['tree'],
+      data() {
+        return {
+          
+        }
+      },
+      template: `
+        <div>
+          <div v-if="tree.child">
+            {{tree.name}}
+            <home :tree="tree.child"></home>
+          </div>
+          <div v-else>{{tree.name}}</div>
+        </div>
+      `,
+      components: {
+        swiper,
+        scroll
+      },
+      computed: {
+        count() {
+          return global.count
+        }
+      },
+    }
+
+    new Vue({
+      el: '.root',
+      data: {
+        tree: {
+          name: 'a',
+          child: {
+            name: 'b',
+            child: {
+              name: 'c',
+              child: {
+                name: 'd'
+              }
+            }
+          }
+        }
+      },
+      components: {
+        home
+      }
+    })
+  </script>
+</body>
+</html>

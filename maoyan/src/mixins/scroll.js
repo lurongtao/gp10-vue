@@ -6,7 +6,7 @@ import { Indicator, Toast } from 'mint-ui'
 
 Vue.mixin({
   methods: {
-    async scroll({vm, params}) {
+    async scroll({vm, container, params}) {
 
       let page = 0
 
@@ -17,9 +17,11 @@ Vue.mixin({
 
       Indicator.close()
 
-      let bScroll = new BScroll('.tab-content', {
+      let bScroll = new BScroll(container, {
         pullUpLoad: true
       })
+
+      console.log(bScroll)
 
       let chunkedMovieIds = _.chunk(movieIds.slice(12), 10)
 

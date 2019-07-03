@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Movies from './views/Movies'
+// import Movies from './views/Movies'
 import Tv from './views/Tv'
 import Detail from './views/Detail'
 import Page404 from './views/Page404'
-import SideBar from './views/SideBar'
+  import SideBar from './views/SideBar'
 
 Vue.use(VueRouter)
 
@@ -17,7 +17,7 @@ let routes = [
   {
     path: '/movie',
     name: 'moive',
-    component: Movies
+    component: () => import('./views/Movies')
   },
   {
     path: '/television',
@@ -36,14 +36,18 @@ let routes = [
     children: [
       {
         name: 'detail',
-        path: ':id',
+        path: '',
         components: {
           default: Detail,
           sidebar: SideBar
         },
+        beforeEnter: (to, from, next) => {
+          console.log('beforeEnter')
+          next()
+        },
         props: {
           default: (route) => ({
-            id: route.params.id,
+            id: route.query.id,
             abc: 'abc'
           }),
           sidebar: true
@@ -63,5 +67,23 @@ let router = new VueRouter({
   mode: 'history',
   routes
 })
+
+
+router.afterEach((to, from) => {
+  console.log('afterEach')
+})
+
+router.beforeEach((to, from, next) => {
+  console.log('beforeEach')
+  next()
+})
+
+router.beforeResolve((to, from, next) => {
+  console.log('beforeResolve')
+  next()
+})
+
+
+
 
 export default router

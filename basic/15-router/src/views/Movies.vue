@@ -7,12 +7,7 @@
 <script>
 export default {
   destroyed() {
-    console.log('Movies has destroyed.')
-  },
-
-  beforeRouteUpdate(to, from, next) {
-    // this.id = to.params.id
-    console.log('movie beforeRouteUpdate')
+    // console.log('Movies has destroyed.')
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="tab-content">
+    <div class="tab-content" id="intheater-scroll">
       <div class="page n-hot active">
         <div class="list-wrap">
           <MovieItem
@@ -36,6 +36,7 @@ export default {
   async mounted() {
     this.scroll({
       vm: this,
+      container: '#intheater-scroll',
       params: {
         firstReq: {
           url: '/ajax/movieOnInfoList',
@@ -67,7 +68,7 @@ export default {
   padding-top .44rem
   .tab-content
     height 100%
-    over-flow hidden
+    overflow hidden
     .page
       position static
 </style>

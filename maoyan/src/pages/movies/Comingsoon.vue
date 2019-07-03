@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="tab-content">
+    <div class="tab-content" id="comingsoon-scroll">
       <div class="page f-hot active" data-hot=".f-hot" data-cid="c_3j5p10oz">
         <div class="list-wrap" style="margin-top: 0px;">
           <most-expect></most-expect>
@@ -35,6 +35,7 @@ export default {
   mounted() {
     this.scroll({
       vm: this,
+      container: '#comingsoon-scroll',
       params: {
         firstReq: {
           url: '/ajax/comingList',
@@ -68,7 +69,7 @@ export default {
   width 100%
   .tab-content {
     height: 100%;
-    over-flow: hidden;
+    overflow: hidden;
 
     .page {
       position: static;
