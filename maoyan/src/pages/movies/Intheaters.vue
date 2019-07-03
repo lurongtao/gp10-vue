@@ -29,7 +29,13 @@ export default {
     }
   },
 
+  methods: {
+    
+  },
+
   async mounted() {
+    // '/ajax/movieOnInfoList'
+    // /ajax/moreComingList
     this.scroll({
       vm: this,
       params: {
