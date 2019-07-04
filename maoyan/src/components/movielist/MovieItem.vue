@@ -1,5 +1,5 @@
 <template>
-    <div class="item">
+    <div class="item" @click="handleClick(movie.id, movie.nm)">
       <div class="main-block">
         <div class="avatar">
           <div class="default-img-bg">
@@ -43,6 +43,18 @@ export default {
 
   components: {
     MovieButton
+  },
+
+  methods: {
+    handleClick(id, nm) {
+      this.$router.push({
+        name: 'detail',
+        params: {
+          id,
+          nm
+        }
+      })
+    }
   }
 }
 </script>

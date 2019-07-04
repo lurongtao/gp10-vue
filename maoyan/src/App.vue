@@ -1,16 +1,5 @@
 <template>
-  <Index />
+  <keep-alive>
+    <router-view></router-view>
+  </keep-alive>
 </template>
-
-<script>
-import Index from './pages/Index'
-export default {
-  components: {
-    Index
-  }
-}
-</script>
-
-<style lang="stylus" scoped>
-
-</style>
