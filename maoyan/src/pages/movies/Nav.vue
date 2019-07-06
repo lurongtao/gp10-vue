@@ -1,8 +1,8 @@
 <template>
   <section class="topbar">
     <div class="white-bg topbar-bg">
-      <div class="city-entry">
-        <span class="city-name">北京</span><i class="city-entry-arrow"></i>
+      <div class="city-entry" @click="handleClick">
+        <span class="city-name">{{city}}</span><i class="city-entry-arrow"></i>
       </div>
       
       <div class="switch-hot">
@@ -15,6 +15,21 @@
     </div>
   </section>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    ...mapState(['city'])
+  },
+
+  methods: {
+    handleClick() {
+      this.$router.push('/city')
+    }
+  },
+}
+</script>
 
 <style lang="stylus">
 @import '~@/assets/styles/border'

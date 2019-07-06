@@ -1,3 +1,9 @@
+const path = require('path')
+
+function resolve(url) {
+  return path.resolve(__dirname, url)
+}
+
 module.exports = {
   devServer: {
     proxy: {
@@ -6,5 +12,10 @@ module.exports = {
         changeOrigin: true
       }
     }
+  },
+
+  chainWebpack(config) {
+    config.resolve.alias
+      .set('utils', resolve('./src/utils'))
   }
 }

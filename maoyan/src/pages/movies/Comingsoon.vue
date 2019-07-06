@@ -20,11 +20,18 @@ import MovieList from '@/components/movielist/MovieList'
 import _ from 'lodash'
 import http from '../../utils/http'
 import BScroll from 'better-scroll'
+
+import resetState from '@/utils/reset-state'
 export default {
-  data() {
-    return {
-      movieList: []
+  computed: {
+    movieList() {
+      return this.$store.state.data.coming
     }
+  },
+
+  beforeRouteLeave(to, from, next) {
+    resetState(to, this)
+    next()
   },
 
   components: {

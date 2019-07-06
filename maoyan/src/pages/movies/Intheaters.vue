@@ -18,19 +18,21 @@
 
 <script>
 import MovieItem from '@/components/movielist/MovieItem'
+import resetState from 'utils/reset-state'
 export default {
   components: {
     MovieItem
   },
 
-  data() {
-    return {
-      movieList: []
-    }
+  beforeRouteLeave(to, from, next) {
+    resetState(to, this)
+    next()
   },
 
-  methods: {
-    
+  computed: {
+    movieList() {
+      return this.$store.state.data.movieList
+    }
   },
 
   async mounted() {

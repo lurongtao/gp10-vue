@@ -11,6 +11,7 @@ import Intheater from '../pages/movies/Intheaters'
 import Comingsoon from '../pages/movies/Comingsoon'
 
 import Detail from '../pages/detail/Detail'
+import City from '../pages/city/City'
 
 Vue.use(VueRouter)
 
@@ -56,6 +57,11 @@ let routes = [
     path: '/detail/:id',
     name: 'detail',
     component: Detail
+  },
+  {
+    path: '/city',
+    name: 'city',
+    component: City
   }
 ]
 
