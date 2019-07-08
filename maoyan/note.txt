@@ -31,3 +31,15 @@ https://www.cnblogs.com/jszhp/p/9549706.html
 
 2019-07-03
 数据扁平化
+
+2019-07-08
+项目部署发布架构：
+- 前后端不分离
+- 前后端分离
+
+DNS 解析
+1、读取本地hosts来解析
+2、如果本地没有解析地址，走互联网的DNS服务器
+
+配置env
+https://www.cnblogs.com/mengff/p/7350030.html
