@@ -21,5 +21,6 @@ module.exports = {
   chainWebpack(config) {
     config.resolve.alias
       .set('utils', resolve('./src/utils'))
+      .set('vue$', 'vue/dist/vue.common.js')
   }
 }

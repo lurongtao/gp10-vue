@@ -43,3 +43,11 @@ DNS 解析
 
 配置env
 https://www.cnblogs.com/mengff/p/7350030.html
+
+2019-07-09
+VNode
+1、mountComponent：调用初始化钩子，然后准备Mount, 调用update
+2、update：如果是第一次渲染，oldVNode不存在，则直接创建，否则 patch
+3、patch：patch oldVNode 前的准备，如果老VNode不存在，就创建，否则 patchVnode
+4、patchVnode：比较新旧VNode的子节点的类型，如果两个子节点都存在，则 updateChildren
+5、updateChildren: 存在两组子节点，分有key和没有key两种情况，做两组子节点Diff

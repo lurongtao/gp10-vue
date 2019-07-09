@@ -13,6 +13,7 @@
     "lodash": "^4.17.11",
     "mint-ui": "^2.2.13",
     "vue": "^2.6.10",
+    "vue-class-component": "^7.1.0",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
   },
