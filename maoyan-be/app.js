@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var apiProxy = require('./routes/api-router')
+var apiProxy = require('./routes/api-proxy')
 
 var app = express();
 

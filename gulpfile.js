@@ -13,7 +13,7 @@ function clear(target) {
 }
 
 function watcher() {
-  watch('./maoyan/dist/*.html', series(clear('./www/*.html'), copydist))
+  watch('./maoyan/dist/*.html', series(clear('./www'), copydist))
 }
 
 exports.default = series(copydist, watcher)
