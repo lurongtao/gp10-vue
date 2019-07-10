@@ -90,3 +90,5 @@ oops:
 - props
 - states
 3、所有的状态都在内存里
+
+https://blog.csdn.net/qq_23994787/article/details/77941532
